@@ -5,9 +5,9 @@
     android:padding="@dimen/card_margin"
     tools:context=".StreamService">
 
-    <TextView
+    <SurfaceView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:id="@+id/surfaceView"/>
 
 </RelativeLayout>
