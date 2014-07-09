@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">GlassStream</string>
-    <string name="title_activity_steam_service">GlassStream Camera Stream</string>
+    <string name="title_activity_steam_activity">GlassStream Camera Stream</string>
     <string name="action_stop">Stop</string>
     <string name="hello_world">Hello world!</string>
     <string name="glass_voice_trigger">start streaming the camera</string>

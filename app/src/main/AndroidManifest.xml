@@ -7,21 +7,19 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <activity
-            android:name=".LiveCardMenuActivity"
-            android:theme="@style/MenuTheme" />
 
-        <service
-            android:name=".StreamService"
+        <activity
+            android:name=".StreamActivity"
             android:icon="@drawable/ic_glass_logo"
-            android:label="@string/title_activity_steam_service" >
+            android:label="@string/title_activity_steam_activity"
+            android:immersive="true" >
             <intent-filter>
                 <action android:name=
                     "com.google.android.glass.action.VOICE_TRIGGER" />
             </intent-filter>
             <meta-data android:name="com.google.android.glass.VoiceTrigger"
                 android:resource="@xml/voice_trigger_start" />
-        </service>
+        </activity>
     </application>
 
     <uses-permission
