@@ -1,6 +1,6 @@
 package ca.ryerson.scs.glassstream;
 
-import com.google.android.glass.timeline.LiveCard;
+
 
 import android.app.Activity;
 import android.app.Service;
