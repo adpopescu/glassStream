@@ -4,11 +4,13 @@ import com.google.android.glass.timeline.LiveCard;
 
 import android.app.Activity;
 import android.app.Service;
+import android.hardware.Camera;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.SurfaceHolder;
 
 
+import net.majorkernelpanic.streaming.MediaStream;
 import net.majorkernelpanic.streaming.Session;
 import net.majorkernelpanic.streaming.SessionBuilder;
 import net.majorkernelpanic.streaming.gl.SurfaceView;
@@ -22,8 +24,10 @@ import net.majorkernelpanic.streaming.video.VideoQuality;
 public class StreamActivity extends Activity implements Session.Callback,SurfaceHolder.Callback {
 
     private static final String TAG = "StreamActivity";
+    private final int mBitrate = 2000000;
     private Session mSession;
     private SurfaceView mSurfaceView;
+    private final int mMaxFrameRate = 30;
 
 
     @Override
@@ -33,6 +37,11 @@ public class StreamActivity extends Activity implements Session.Callback,Surface
 
         mSurfaceView = (SurfaceView)findViewById(R.id.surfaceView);
 
+        // setup camera for 720p stream and
+        VideoQuality videoQuality=new VideoQuality(1280,720,
+                mMaxFrameRate,
+                mBitrate);
+
         mSession = SessionBuilder.getInstance()
                 .setCallback(this)
                 .setSurfaceView(mSurfaceView)
@@ -41,8 +50,10 @@ public class StreamActivity extends Activity implements Session.Callback,Surface
                 .setAudioEncoder(SessionBuilder.AUDIO_NONE)
                 .setAudioQuality(new AudioQuality(16000, 32000))
                 .setVideoEncoder(SessionBuilder.VIDEO_H264)
-                .setVideoQuality(new VideoQuality(320,240,20,500000))
+                .setVideoQuality(videoQuality)
                 .build();
+
+        mSession.getVideoTrack().setStreamingMethod(MediaStream.MODE_MEDIACODEC_API_2);
 
         mSurfaceView.getHolder().addCallback(this);
     }
