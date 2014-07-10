@@ -24,10 +24,10 @@ import net.majorkernelpanic.streaming.video.VideoQuality;
 public class StreamActivity extends Activity implements Session.Callback,SurfaceHolder.Callback {
 
     private static final String TAG = "StreamActivity";
-    private final int mBitrate = 2000000;
+    private final int mBitrate = 500000;
     private Session mSession;
     private SurfaceView mSurfaceView;
-    private final int mMaxFrameRate = 30;
+    private final int mMaxFrameRate = 20;
 
 
     @Override
@@ -38,7 +38,7 @@ public class StreamActivity extends Activity implements Session.Callback,Surface
         mSurfaceView = (SurfaceView)findViewById(R.id.surfaceView);
 
         // setup camera for 720p stream and
-        VideoQuality videoQuality=new VideoQuality(1280,720,
+        VideoQuality videoQuality=new VideoQuality(320,240,
                 mMaxFrameRate,
                 mBitrate);
 
